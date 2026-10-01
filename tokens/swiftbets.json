@@ -1,0 +1,20 @@
+{
+  "name": "SwiftBets",
+  "colorScheme": "dark",
+  "color": {
+    "surface": "#0b1220",
+    "surfaceRaised": "#121b2e",
+    "surfaceSunken": "#070c16",
+    "border": "#22304d",
+    "text": "#e6ecf5",
+    "textMuted": "#93a1b8",
+    "accent": "#3b82f6",
+    "accentStrong": "#2563eb",
+    "onAccent": "#ffffff",
+    "selected": "#1d3b6e",
+    "positive": "#22c55e",
+    "negative": "#f87171",
+    "warning": "#f59e0b",
+    "focus": "#93c5fd"
+  }
+}
