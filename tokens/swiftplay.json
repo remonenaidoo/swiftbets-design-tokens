@@ -1,0 +1,20 @@
+{
+  "name": "SwiftPlay",
+  "colorScheme": "dark",
+  "color": {
+    "surface": "#120d1f",
+    "surfaceRaised": "#1c1530",
+    "surfaceSunken": "#0b0814",
+    "border": "#35294f",
+    "text": "#f1ecfb",
+    "textMuted": "#a99cc4",
+    "accent": "#a855f7",
+    "accentStrong": "#7e22ce",
+    "onAccent": "#ffffff",
+    "selected": "#3b1f66",
+    "positive": "#34d399",
+    "negative": "#fb7185",
+    "warning": "#fbbf24",
+    "focus": "#d8b4fe"
+  }
+}

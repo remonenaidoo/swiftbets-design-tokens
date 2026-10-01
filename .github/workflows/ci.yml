@@ -1,0 +1,51 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Release this commit as v<version> (for example 0.1.0)
+        type: string
+        default: ''
+
+permissions:
+  contents: read
+
+jobs:
+  node:
+    uses: remonenaidoo/swiftbets-platform/.github/workflows/node.yml@main
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+
+  # Consumers install the tarball attached to the release (D109); there is no registry to publish to.
+  release:
+    if: inputs.version != ''
+    needs: node
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .nvmrc
+      - name: Pack
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          npm version "$VERSION" --no-git-tag-version --allow-same-version
+          npm run build
+          npm pack
+      - name: Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          gh release view "v$VERSION" --repo "$GITHUB_REPOSITORY" >/dev/null 2>&1 \
+            || gh release create "v$VERSION" --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" --title "v$VERSION" --generate-notes
+          gh release upload "v$VERSION" ./*.tgz --repo "$GITHUB_REPOSITORY" --clobber

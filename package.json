@@ -1,0 +1,23 @@
+{
+  "name": "@swiftbets/design-tokens",
+  "version": "0.1.0",
+  "description": "SwiftBets and SwiftPlay brand tokens: CSS variables per brand, a Tailwind v4 theme and a typed module for React Native.",
+  "license": "MIT",
+  "author": "Remone Naidoo",
+  "repository": { "type": "git", "url": "https://github.com/remonenaidoo/swiftbets-design-tokens" },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "default": "./dist/index.js" },
+    "./theme.css": "./dist/theme.css",
+    "./swiftbets.css": "./dist/swiftbets.css",
+    "./swiftplay.css": "./dist/swiftplay.css"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/build.mjs && node --test test/*.test.mjs"
+  },
+  "engines": { "node": ">=22" }
+}
