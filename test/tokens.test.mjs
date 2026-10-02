@@ -36,6 +36,17 @@ for (const [id, brand] of Object.entries(brands)) {
     assert.ok(contrast(c.focus, c.surface) >= 3, 'focus ring is a 3:1 non-text indicator');
   });
 
+  test(`${id}: cards, odds and badges stay readable`, () => {
+    for (const card of [c.card, c.cardHigh]) {
+      for (const [name, fg] of [['text', c.text], ['muted', c.textMuted], ['odds', c.odds]]) {
+        assert.ok(contrast(fg, card) >= 4.5, `${name} on ${card}: ${contrast(fg, card).toFixed(2)}`);
+      }
+    }
+    assert.ok(contrast(c.onPositive, c.positive) >= 4.5, 'deposit button label');
+    assert.ok(contrast(c.onAccent, c.live) >= 4.5, `live badge label: ${contrast(c.onAccent, c.live).toFixed(2)}`);
+    assert.ok(contrast(c.gold, c.surface) >= 4.5, 'gold on surface');
+  });
+
   test(`${id}: CSS variables are emitted for every colour`, () => {
     const css = readFileSync(new URL(`../dist/${id}.css`, import.meta.url), 'utf8');
     for (const key of Object.keys(c)) assert.match(css, new RegExp(`--sb-color-${key.replace(/[A-Z]/g, (m) => `-${m.toLowerCase()}`)}:`));
