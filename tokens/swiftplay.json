@@ -15,6 +15,12 @@
     "positive": "#34d399",
     "negative": "#fb7185",
     "warning": "#fbbf24",
-    "focus": "#d8b4fe"
+    "focus": "#d8b4fe",
+    "card": "#261c40",
+    "cardHigh": "#31254f",
+    "odds": "#d8b4fe",
+    "onPositive": "#032016",
+    "live": "#be185d",
+    "gold": "#fbbf24"
   }
 }
